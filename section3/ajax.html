@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="app.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 
 </head>
 
@@ -15,10 +16,21 @@
     <div id="app">
         <button @click="getDogImage">画像を取得</button>
         <img :src="dogImage">
+        <input type="text" v-model="watchTest">
     </div>
 </body>
 
 <script>
+    let obj = {
+        a: 'テスト'
+    }
+    obj.b = 'あああ'
+    obj.c = test
+
+    function test() {
+        console.log('テスト')
+    }
+
     const url = 'https://dog.ceo/api/breeds/image/random'
     const options = {
         method: 'get'
@@ -28,7 +40,8 @@
         el: '#app',
         data() {
             return {
-                dogImage: ''
+                dogImage: '',
+                watchTest: ''
             }
         },
         methods: {
@@ -39,9 +52,15 @@
                 this.dogImage = response.message
             }
         },
+        watch: {
+            watchTest() {
+                this.watchDogImage()
+            }
+        },
         // ボタンを押したらでなく、画面を読み込んだタイミングで実行
         created() {
             this.getDogImage()
+            this.watchDogImage = _.debounce(this.getDogImage, 1000)
         }
     })
 </script>
