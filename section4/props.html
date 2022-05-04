@@ -26,7 +26,7 @@
 <body>
     <div id="app" class="parent">
         <my-component title="テスト" class="child"></my-component>
-        <my-component class="child"></my-component>
+        <my-component :title="parentTitle" class="child"></my-component>
         <my-component disabled class="child"></my-component>
     </div>
 </body>
@@ -62,7 +62,9 @@
             myComponent
         },
         data() {
-            return {}
+            return {
+                parentTitle: '親側のタイトル'
+            }
         }
     })
 </script>
