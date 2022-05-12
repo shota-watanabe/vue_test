@@ -4,9 +4,17 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    state: {},
+    state: {
+        // 初期値
+        count: 0
+    },
     getters: {},
-    mutations: {},
+    // stateの値を変えるためにmutations
+    mutations: {
+        increment(state) {
+            state.count++
+        }
+    },
     actions: {},
     // ファイルを分割するときに使う
     modules: {}
