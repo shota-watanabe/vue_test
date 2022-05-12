@@ -20,7 +20,21 @@ export default new Vuex.Store({
             state.count += payload.value
         }
     },
-    actions: {},
+    actions: {
+        /* incrementAction(context) {
+            // mutationsのincrementを呼び出す
+            context.commit('increment')
+        }, */
+
+        // こっちのほうがシンプル。commitはオブジェクト
+        incrementAction({ commit }) {
+            commit('increment')
+        },
+        addCountAction({ commit }, payload) {
+            // オブジェがそのまま渡ってくる
+            commit('addCount', payload)
+        }
+    },
     // ファイルを分割するときに使う
     modules: {}
 })
