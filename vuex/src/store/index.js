@@ -13,6 +13,11 @@ export default new Vuex.Store({
     mutations: {
         increment(state) {
             state.count++
+        },
+        // 第2引数はオブジェクト
+        addCount(state, payload) {
+            // payloadには、コンポーネントから渡ってくる値が入る
+            state.count += payload.value
         }
     },
     actions: {},
