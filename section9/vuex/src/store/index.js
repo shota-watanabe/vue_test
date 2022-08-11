@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import auth from './auth'
 
 Vue.use(Vuex)
 
@@ -54,5 +55,7 @@ export default new Vuex.Store({
         }
     },
     // ファイルを分割するときに使う
-    modules: {}
+    modules: {
+        auth
+    }
 })
