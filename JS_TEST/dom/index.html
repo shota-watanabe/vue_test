@@ -12,6 +12,7 @@
 
 <body>
     <div id="app">
+      {{ message }}
     </div>
 </body>
 
@@ -19,14 +20,22 @@
 
 <span class="border-red">いいい</span>
 <script>
+  // Vueクラス（設計図）をインスタンス(実態)化する(そのままでは使えないため)
+  // 引数で値を入れている elやdataは予め用意されている機能
     let app = new Vue({
-        el: '#app',
+        el: '#app', // 仮想DOMにする範囲
+        // data内に定義してあるものが仮想DOM内でも表示できる
         data() {
             return {
-
+              message: 'Hello Vue!' // キー(key):値(value)
             }
         },
     })
+    // DOMの中身を観る
+    const html = document.querySelector('html')
+    // dir あるオブジェクトに対してJSの利用可能な全てのプロパティ、メソッドを表示する
+    console.dir(html);
+    console.dir(app);
 </script>
 
 </html>
