@@ -11,8 +11,25 @@
 
   <body>
     <!-- リアルDOM JSがつながってるかどうかが分からない-->
-    <a id="google_link">googleへのリンク</a>
-    <div id="app">{{ message }}</div>
+    <div id="app">
+      {{ message }}
+      <!-- <a id="google_link">googleへのリンク</a> -->
+      <!-- v-bind 紐付ける-->
+      <!-- <a v-bind:href="google">googleへのリンク</a> -->
+      <a :href="google">googleへのリンク</a>
+      <br>
+      オブジェクト.キー
+      <a :href="book.url">{{ book.title }}</a>
+      <br>
+      <!-- タグの属性が複数ある場合 -->
+      <!-- このように1つ1つv-bindで紐付けてもいいが... -->
+      <!-- <input :name="" :value="" :placeholder=""> -->
+      <!-- まとめで書くこともできる -->
+      <input v-bind="{name:formInput.name, placeholder:formInput.placeholder}">
+      <!-- タグの名前がキーと一致していれば、さらに省略できる -->
+      <br>
+      <input v-bind="formInput">
+    </div>
   </body>
 
   <p class="border-red">あああ</p>
@@ -27,6 +44,16 @@
       data() {
         return {
           message: "Hello Vue!", // キー(key):値(value)
+          google: 'https://google.com',
+          // bookというオブジェクトの中にkeyとvalueを含めることができる
+          book: {
+            title: '本のタイトル',
+            url: 'https://google.com'
+          },
+          formInput: {
+            name: 'your_name',
+            placeholder: 'お名前を入力してください'
+          }
         };
       },
     });
@@ -38,7 +65,7 @@
 
     // 直接DOM操作
     // idを指定(idが変わればコード変更必要)
-    const googleLink = document.getElementById('google_link');
-    googleLink.href = 'https://google.com'
+    // const googleLink = document.getElementById('google_link');
+    // googleLink.href = 'https://google.com'
   </script>
 </html>
