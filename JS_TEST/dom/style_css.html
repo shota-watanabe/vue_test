@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/app.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <style>
+    .active{
+      border:1px solid red;
+    }
+    .text-danger{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <!-- リアルDOM -->
+    <!-- styleは;で区切る -->
+    <div style="color:blue; font-size:20px">styleテスト</div><br>
+    <div class="active text-danger">classテスト</div>
+  <div id="app">
+    <div :style="{fontSize:fontSize}">Styleテスト</div>
+    <!-- ケバブケースで書きたい場合 -->
+    <div :style="{'font-size':fontSize}">Styleテスト</div>
+    <div :class="{active:isActive}">classテスト</div>
+  </div>
+</body>
+<script>
+  let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          // data内(javascript)ではキャメルケース キャメルはラクダ ラクダのコブのように盛り上がる
+          // HTML内では自動的にケバブケースに置き換わる(font-size)
+          fontSize: '20px',
+          // classをつけたり消したりできる
+          isActive: false
+        };
+      },
+    });
+</script>
+</html>

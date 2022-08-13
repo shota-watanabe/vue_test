@@ -12,6 +12,7 @@
   <body>
     <!-- リアルDOM JSがつながってるかどうかが分からない-->
     <div id="app">
+      <div></div>
       {{ message }}
       <!-- <a id="google_link">googleへのリンク</a> -->
       <!-- v-bind 紐付ける-->
@@ -53,7 +54,9 @@
           formInput: {
             name: 'your_name',
             placeholder: 'お名前を入力してください'
-          }
+          },
+          // data内ではキャメルケース キャメルはラクダ ラクダのコブのように盛り上がる
+          fontSize: '20px'
         };
       },
     });
