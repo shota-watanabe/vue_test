@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/app.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <style>
+    /* v^cloakという属性がついていたら非表示にする */
+    [v-cloak] {
+    display: none;
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div v-cloak>{{ test1 }}</div>
+    <div>{{ test2 }}</div>
+  </div>
+</body>
+<script>
+  setTimeout(()=>{
+    new Vue({
+      el:'#app',
+      data(){
+        return {
+          test1: 'v-cloakあり',
+          test2: 'v-cloakなし'
+        }
+      }
+    })
+  }, 3000)
+</script>
+</html>
