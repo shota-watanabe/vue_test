@@ -44,14 +44,29 @@
         },
         computed: {
           // データの値が変わらないと実行されない 処理の節約ができる
-            totalPrice() {
-              // return内に特定したいdataを含める 
-              // thisはVueインスタンス
-              console.log('computedです')
-                return this.price * this.number
-            }
+            // totalPrice() {
+            //   // return内に特定したいdataを含める
+            //   // thisはVueインスタンス
+            //   console.log('computedです')
+            //     return this.price * this.number
+            // }
+
+            // アロー関数で短く書く appはVueインスタンス
+            totalPrice: (app) => app.number * app.price
         }
     })
+    console.log(this) // windowオブジェクト
+    const obj = {
+      test: function(){
+        console.log(this) // オブジェクトの中 そのオブジェクトを参照する
+      }
+    }
+
+    const objArrow = {
+      test: () => {
+        console.log(this) // windowオブジェクト undefinedとなる
+      }
+    }
 </script>
 
 </html>
