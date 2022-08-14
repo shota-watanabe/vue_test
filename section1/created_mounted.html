@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/app.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+  </div>
+</body>
+<script>
+  let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          test: 'test'
+        };
+      },
+      // 使いみち...非同期通信でデータを取得したいとき
+      created(){
+        console.log('created')
+        // elementが生成されていたら表示させる
+        console.log(this.$el) // undefinedとなる
+        console.log(this.test)
+      },
+      // DOM生成後のタイミング
+      // https://jp.vuejs.org/v2/api/#mounted
+      mounted(){
+        console.log('mounted')
+        console.log(this.$el)
+        console.log(this.test)
+      }
+    });
+</script>
+</html>
