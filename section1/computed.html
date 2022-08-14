@@ -20,6 +20,9 @@
 
 <body>
     <div id="app">
+      {{ totalPriceMethods() }}
+      {{ totalPriceMethods() }}
+        {{totalPrice }}
         {{totalPrice }}
     </div>
 </body>
@@ -33,8 +36,18 @@
                 number: 1
             }
         },
+        methods:{
+          totalPriceMethods(){
+            console.log('methodです')
+            return this.price * this.number
+          }
+        },
         computed: {
+          // データの値が変わらないと実行されない 処理の節約ができる
             totalPrice() {
+              // return内に特定したいdataを含める 
+              // thisはVueインスタンス
+              console.log('computedです')
                 return this.price * this.number
             }
         }
