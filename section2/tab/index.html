@@ -14,7 +14,10 @@
     <div id="app">
         <section class="tab">
             <ul class="tab__label">
+              <!-- オブジェクトでv-forを使うにはkeyが必要 -->
                 <li v-for="(item, id) in items" :key="item.id">
+                  <!-- activeというclassをつける条件 -->
+                  <!-- preventをつけると、ページの上部までジャンプしない -->
                     <a href="#" @click.prevent="activate(item.id)" :class="{active: active === item.id}">{{ item.title }}</a>
                 </li>
             </ul>
@@ -37,7 +40,7 @@
         el: '#app',
         data() {
             return {
-                active: 1,
+                active: 1, // 現在何番目を選んでいるかという情報
                 items: [{
                     id: 1,
                     title: 'サイトの情報',
@@ -51,6 +54,7 @@
             }
         },
         methods: {
+          // クリックしたらactiveの数値を変える
             activate(id) {
                 this.active = id;
             }
