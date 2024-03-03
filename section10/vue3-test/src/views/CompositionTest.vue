@@ -16,7 +16,10 @@
 </template>
 
 <script>
-import { ref, reactive, toRefs, computed, watch, watchEffect } from "vue";
+import {
+  ref, reactive, toRefs,
+  computed, watch, watchEffect, onMounted
+} from "vue";
 export default {
   // 速さ順左から setup->created->mounted
   // setupではthisが使えない
@@ -60,6 +63,10 @@ export default {
     watchEffect(() => {
       // watchEffect内で書いたReactiveなオブジェクトを監視
       console.log(`watchEffect: ${searchEffect.value}`)
+    })
+
+    onMounted(() => {
+      console.log('onMounted')
     })
 
     console.log("setup");
