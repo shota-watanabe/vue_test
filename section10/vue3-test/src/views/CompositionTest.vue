@@ -9,11 +9,14 @@
     <p>reactiveToRefs: {{ titleRef }}</p>
     <p>reactiveToRefs: {{ authorRef[1] }}</p>
     <button @click="btnClick">クリック</button>
+    <p>computed: {{ totalPrice }}</p>
+    <div>watch: <input v-model="search"></div>
+    <div>watchEffect: <input v-model="searchEffect"></div>
   </div>
 </template>
 
 <script>
-import { ref, reactive, toRefs } from "vue";
+import { ref, reactive, toRefs, computed, watch, watchEffect } from "vue";
 export default {
   // 速さ順左から setup->created->mounted
   // setupではthisが使えない
@@ -29,12 +32,35 @@ export default {
       titleRef: 'タイトル2',
       authorRef: ['大谷2', '伊藤2']
     })
+
+    const item = reactive({
+      price: 100,
+      number: 1
+    })
+
+    const totalPrice = computed(() => {
+      return item.price * item.number
+    })
     // 引数が1つの場合は括弧を省略できる
     const btnClick = e => {
       console.log('クリック')
       // イベント情報を取得
       console.log(e)
     }
+
+    const search = ref('')
+    watch(search, (newValue, preValue) => {
+      // refなのでvalueが必要
+      console.log(`watch: ${search.value}`)
+      console.log(`new: ${newValue}`)
+      console.log(`prev: ${preValue}`)
+    })
+
+    const searchEffect = ref('')
+    watchEffect(() => {
+      // watchEffect内で書いたReactiveなオブジェクトを監視
+      console.log(`watchEffect: ${searchEffect.value}`)
+    })
 
     console.log("setup");
     console.log(nameRef.value);
@@ -45,7 +71,11 @@ export default {
       book,
       // リアクティブなオブジェクトを展開するときはtoRefs
       ...toRefs(bookToRefs),
-      btnClick
+      btnClick,
+      item,
+      totalPrice,
+      search,
+      searchEffect
     };
   },
   data() {
