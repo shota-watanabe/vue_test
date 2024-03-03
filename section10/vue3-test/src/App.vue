@@ -7,6 +7,7 @@
     <router-link to="/composition-test">Composition</router-link> |
     <router-link to="/props-emit-test">PropsEmitTest</router-link> |
     <router-link to="/function-test">FunctionTest</router-link> |
+    <router-link to="/router-test">RouterTest</router-link> |
     <router-view
       :setupBooks="setupBooks"
       :dataBooks="dataBooks"
