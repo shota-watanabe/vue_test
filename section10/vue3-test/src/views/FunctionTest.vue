@@ -13,22 +13,25 @@
 </template>
 
 <script>
-import { computed, reactive } from "vue";
+import { reactive } from "vue";
+import useCounter from "@/composables/useCounter";
+
 // 合成関数 頭にuseをつけるのが慣習
-const useCounter = (item) => {
-  const increment = () => {
-    item.amount++;
-  };
-  const decrement = () => {
-    item.amount--;
-  };
+// script内で合成関数を作成する場合
+// const useCounter = (item) => {
+//   const increment = () => {
+//     item.amount++;
+//   };
+//   const decrement = () => {
+//     item.amount--;
+//   };
 
-  const totalPrice = computed(() => {
-    return item.price * item.amount;
-  });
+//   const totalPrice = computed(() => {
+//     return item.price * item.amount;
+//   });
 
-  return { increment, decrement, totalPrice };
-};
+//   return { increment, decrement, totalPrice };
+// };
 
 export default {
   setup() {
