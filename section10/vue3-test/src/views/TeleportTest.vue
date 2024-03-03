@@ -1,6 +1,6 @@
 <template>
   <div>
-    Teleport
+    <p>Teleport</p>
     <ModalButton />
   </div>
 </template>

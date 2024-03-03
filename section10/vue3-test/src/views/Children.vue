@@ -1,6 +1,8 @@
 <template>
-  <div>Children（子）</div>
-  <Grand-Children />
+  <div>
+    <p>Children（子）</p>
+    <Grand-Children />
+  </div>
 </template>
 
 <script>

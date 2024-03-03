@@ -1,6 +1,6 @@
 <template>
   <div>
-    CompositionTest
+    <p>CompositionTest</p>
     <p>{{ name }}</p>
     <p>{{ age }}</p>
     <p>ref: {{ nameRef }}</p>

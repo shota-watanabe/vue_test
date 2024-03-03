@@ -6,12 +6,13 @@
     <router-link to="/teleport-test">Teleport</router-link> |
     <router-link to="/composition-test">Composition</router-link> |
     <router-link to="/props-emit-test">PropsEmitTest</router-link> |
+    <router-link to="/function-test">FunctionTest</router-link> |
+    <router-view
+      :setupBooks="setupBooks"
+      :dataBooks="dataBooks"
+      @custom-event="parentMethod"
+    />
   </div>
-  <router-view
-    :setupBooks="setupBooks"
-    :dataBooks="dataBooks"
-    @custom-event="parentMethod"
-  />
 </template>
 
 <script>
