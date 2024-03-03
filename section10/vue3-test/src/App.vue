@@ -7,7 +7,11 @@
     <router-link to="/composition-test">Composition</router-link> |
     <router-link to="/props-emit-test">PropsEmitTest</router-link> |
   </div>
-  <router-view :setupBooks="setupBooks", :dataBooks="dataBooks"/>
+  <router-view
+    :setupBooks="setupBooks"
+    :dataBooks="dataBooks"
+    @custom-event="parentMethod"
+  />
 </template>
 
 <script>
@@ -27,8 +31,8 @@ export default {
     ]);
 
     return {
-      setupBooks
-    }
+      setupBooks,
+    };
   },
   data() {
     return {
@@ -43,6 +47,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    parentMethod(e) {
+      console.log(e)
+    }
   },
   provide() {
     return {
