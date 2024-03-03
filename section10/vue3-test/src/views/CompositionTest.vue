@@ -8,6 +8,7 @@
     <p>reactive: {{ book.author[0] }}</p>
     <p>reactiveToRefs: {{ titleRef }}</p>
     <p>reactiveToRefs: {{ authorRef[1] }}</p>
+    <button @click="btnClick">クリック</button>
   </div>
 </template>
 
@@ -28,6 +29,12 @@ export default {
       titleRef: 'タイトル2',
       authorRef: ['大谷2', '伊藤2']
     })
+    // 引数が1つの場合は括弧を省略できる
+    const btnClick = e => {
+      console.log('クリック')
+      // イベント情報を取得
+      console.log(e)
+    }
 
     console.log("setup");
     console.log(nameRef.value);
@@ -37,7 +44,8 @@ export default {
       nameRef,
       book,
       // リアクティブなオブジェクトを展開するときはtoRefs
-      ...toRefs(bookToRefs)
+      ...toRefs(bookToRefs),
+      btnClick
     };
   },
   data() {
