@@ -1,7 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
+  <ScriptTest title="ここにタイトルが入ります" />
   <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <ScriptTest />
 </template>
 
 <script>
